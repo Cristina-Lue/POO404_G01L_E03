@@ -18,6 +18,14 @@ public class SumaEnteros {
         numero1 = Integer.parseInt(primernumero);
         numero2 = Integer.parseInt(segundonumero);
 
+        if (numero1 < 0 || numero2 < 0) {
+            JOptionPane.showMessageDialog(null,
+                    "No se pueden ingresar números negativos",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        }
+
         System.out.println("Los numero ingresados son "+numero1+ " y " + numero2);
 
         suma = numero1 + numero2;
