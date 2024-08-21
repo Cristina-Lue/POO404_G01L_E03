@@ -120,7 +120,7 @@ public class SaludoPersonalizado {
         System.out.println("Tienes " + edad + " años.");
     }
 
-    // Método para determinar si un año es bisiesto
+    
     public static boolean esBisiesto(int anio) {
         return (anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0);
     }
