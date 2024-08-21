@@ -119,4 +119,28 @@ public class SaludoPersonalizado {
 
         System.out.println("Tienes " + edad + " años.");
     }
+
+    // Método para determinar si un año es bisiesto
+    public static boolean esBisiesto(int anio) {
+        return (anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0);
+    }
+
+    // Método para obtener el año de la fecha de nacimiento
+    public static int obtenerAnio(String fechaNacimiento) {
+        return Integer.parseInt(fechaNacimiento.split("-")[2]);
+    }
+
+    // Método para mostrar el día de la semana de nacimiento
+    public static void mostrarDiaDeLaSemana(String fechaNacimiento) throws ParseException {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+        Date fecha = formatoFecha.parse(fechaNacimiento);
+
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(fecha);
+
+        String[] diasSemana = {"domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"};
+        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK) - 1;
+
+        System.out.println("Naciste un " + diasSemana[diaSemana]+".");
+    }
 }
