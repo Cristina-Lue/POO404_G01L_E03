@@ -53,7 +53,7 @@ public class SaludoPersonalizado {
         scanner.close();
     }
 
-    // Método para validar el formato y los días del mes en la fecha
+   
     public static boolean validarFecha(String fecha) {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
         formatoFecha.setLenient(false); // Desactivar modo permisivo para validar fechas estrictamente
