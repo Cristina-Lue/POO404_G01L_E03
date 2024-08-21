@@ -109,4 +109,30 @@ public class CajeroElectronico {
         }
         return numero;
     }
+    public static double leerDoubleConValidacion(Scanner scanner, String mensaje) {
+        double numero = 0;
+        boolean entradaValida = false;
+
+        while (!entradaValida) {
+            try {
+                System.out.print(mensaje);
+                numero = scanner.nextDouble();
+                entradaValida = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Ingrese una cantidad válida.");
+                scanner.next(); // Limpiar la entrada no válida
+            }
+        }
+        return numero;
+    }
+
+    public static Cuenta buscarCuenta(Cuenta[] cuentas, int numeroCuenta) {
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta.numeroCuenta == numeroCuenta) {
+                return cuenta;
+            }
+        }
+        return null;
+    }
+}
 
