@@ -43,7 +43,7 @@ public class SaludoPersonalizado {
             System.out.println("El año " + anioNacimiento + " no es bisiesto.");
         }
 
-        // Mostrar el día de la semana de nacimiento
+        
         try {
             mostrarDiaDeLaSemana(fechaNacimiento);
         } catch (ParseException e) {
