@@ -5,6 +5,9 @@ public class Desarrollador extends Empleado {
 
         public Desarrollador(String nombre, double salarioBase, double bonusPorProyecto) {
             super(nombre, salarioBase);
+            if (bonusPorProyecto < 0) {
+            throw new IllegalArgumentException("El bonus por proyecto no puede ser negativo.");
+        }
             this.bonusPorProyecto = bonusPorProyecto;
         }
 
