@@ -130,7 +130,7 @@ public class SaludoPersonalizado {
         return Integer.parseInt(fechaNacimiento.split("-")[2]);
     }
 
-    // Método para mostrar el día de la semana de nacimiento
+    
     public static void mostrarDiaDeLaSemana(String fechaNacimiento) throws ParseException {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
         Date fecha = formatoFecha.parse(fechaNacimiento);
