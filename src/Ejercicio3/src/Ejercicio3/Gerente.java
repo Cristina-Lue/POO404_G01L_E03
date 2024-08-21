@@ -5,6 +5,9 @@ public class Gerente extends Empleado {
 
         public Gerente(String nombre, double salarioBase, double bono) {
             super(nombre, salarioBase);
+            if (bono < 0) {
+            throw new IllegalArgumentException("El bono no puede ser negativo.");
+        }
             this.bono = bono;
         }
 
