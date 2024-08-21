@@ -87,7 +87,7 @@ public class SaludoPersonalizado {
         return false;
     }
 
-    // Método para calcular la edad y saludar
+    
     public static void saludarYCalcularEdad(String nombreCompleto, String sexo, String fechaNacimiento) throws ParseException {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
         Date fechaNac = formatoFecha.parse(fechaNacimiento);
