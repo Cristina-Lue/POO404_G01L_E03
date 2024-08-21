@@ -10,7 +10,7 @@ public class SaludoPersonalizado {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Solicitar nombre, sexo, y fecha de nacimiento
+        
         System.out.print("Ingrese su nombre y apellido: ");
         String nombreCompleto = scanner.nextLine();
 
