@@ -93,4 +93,20 @@ public class CajeroElectronico {
         System.out.println("4. Transferencias");
         System.out.println("5. Salir");
     }
+    public static int leerEnteroConValidacion(Scanner scanner, String mensaje) {
+        int numero = 0;
+        boolean entradaValida = false;
+
+        while (!entradaValida) {
+            try {
+                System.out.print(mensaje);
+                numero = scanner.nextInt();
+                entradaValida = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Ingrese un número válido.");
+                scanner.next(); // Limpiar la entrada no válida
+            }
+        }
+        return numero;
+    }
 
