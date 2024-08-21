@@ -42,5 +42,15 @@ public class SaludoPersonalizado {
         } else {
             System.out.println("El año " + anioNacimiento + " no es bisiesto.");
         }
+
+        // Mostrar el día de la semana de nacimiento
+        try {
+            mostrarDiaDeLaSemana(fechaNacimiento);
+        } catch (ParseException e) {
+            System.out.println("Error al procesar la fecha para obtener el día de la semana.");
+        }
+
+        scanner.close();
     }
+
 }
