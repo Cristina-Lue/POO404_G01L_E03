@@ -53,4 +53,38 @@ public class SaludoPersonalizado {
         scanner.close();
     }
 
+    // Método para validar el formato y los días del mes en la fecha
+    public static boolean validarFecha(String fecha) {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+        formatoFecha.setLenient(false); // Desactivar modo permisivo para validar fechas estrictamente
+
+        try {
+            Date fechaParseada = formatoFecha.parse(fecha);
+            Calendar calendario = Calendar.getInstance();
+            calendario.setTime(fechaParseada);
+
+            // Verificar días específicos de cada mes, incluyendo años bisiestos
+            int dia = calendario.get(Calendar.DAY_OF_MONTH);
+            int mes = calendario.get(Calendar.MONTH) + 1; // Enero es 0, diciembre es 11
+            int anio = calendario.get(Calendar.YEAR);
+
+            // Validar febrero para años bisiestos
+            if (mes == 2) {
+                if (esBisiesto(anio) && dia <= 29) {
+                    return true;
+                } else if (!esBisiesto(anio) && dia <= 28) {
+                    return true;
+                }
+            } else if ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia <= 30) {
+                return true; // Meses con 30 días
+            } else if (dia <= 31) {
+                return true; // Meses con 31 días
+            }
+
+        } catch (ParseException e) {
+            return false;
+        }
+        return false;
+    }
+
 }
