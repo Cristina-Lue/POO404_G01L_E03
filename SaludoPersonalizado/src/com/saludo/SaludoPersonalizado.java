@@ -28,5 +28,12 @@ public class SaludoPersonalizado {
             }
         }
 
+        // Calcular edad y saludar
+        try {
+            saludarYCalcularEdad(nombreCompleto, sexo, fechaNacimiento);
+        } catch (ParseException e) {
+            System.out.println("Error al procesar la fecha de nacimiento.");
+        }
+
     }
 }
