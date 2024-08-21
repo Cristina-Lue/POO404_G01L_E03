@@ -86,4 +86,37 @@ public class SaludoPersonalizado {
         }
         return false;
     }
+
+    // Método para calcular la edad y saludar
+    public static void saludarYCalcularEdad(String nombreCompleto, String sexo, String fechaNacimiento) throws ParseException {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaNac = formatoFecha.parse(fechaNacimiento);
+
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(fechaNac);
+
+        int anioNacimiento = calendario.get(Calendar.YEAR);
+        int anioActual = Calendar.getInstance().get(Calendar.YEAR);
+        int edad = anioActual - anioNacimiento;
+
+        String[] nombreDividido = nombreCompleto.split(" ");
+        String nombre = nombreDividido[0];
+        String apellido = nombreDividido.length > 1 ? nombreDividido[1] : "";
+
+        if (edad > 30) {
+            if (sexo.equalsIgnoreCase("Masculino")) {
+                System.out.println("Buenos días Mr. " + apellido);
+            } else if (sexo.equalsIgnoreCase("Femenino")) {
+                System.out.println("Buenos días Ms. " + apellido);
+            }
+        } else {
+            if (sexo.equalsIgnoreCase("Masculino")) {
+                System.out.println("Hola amigo " + nombre);
+            } else if (sexo.equalsIgnoreCase("Femenino")) {
+                System.out.println("Hola amiga " + nombre);
+            }
+        }
+
+        System.out.println("Tienes " + edad + " años.");
+    }
 }
