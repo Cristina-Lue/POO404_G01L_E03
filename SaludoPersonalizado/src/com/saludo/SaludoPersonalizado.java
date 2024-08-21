@@ -35,5 +35,12 @@ public class SaludoPersonalizado {
             System.out.println("Error al procesar la fecha de nacimiento.");
         }
 
+        // Determinar si el año es bisiesto
+        int anioNacimiento = obtenerAnio(fechaNacimiento);
+        if (esBisiesto(anioNacimiento)) {
+            System.out.println("El año " + anioNacimiento + " es bisiesto.");
+        } else {
+            System.out.println("El año " + anioNacimiento + " no es bisiesto.");
+        }
     }
 }
