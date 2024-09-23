@@ -316,6 +316,41 @@ public class Login extends JFrame {
         return false;
     }
 
+    private void agregarComentario() {
+        String input = JOptionPane.showInputDialog("Ingresa el número del pedido para agregar un comentario:");
+        if (input == null) return; 
+        int numeroPedido;
+
+        try {
+            numeroPedido = Integer.parseInt(input);
+            if (numeroPedido > 0 && numeroPedido <= pedidosPendientes.size()) {
+                String comentario = JOptionPane.showInputDialog("Ingresa el comentario:");
+                if (comentario != null && !comentario.trim().isEmpty()) {
+                    Pedido pedido = pedidosPendientes.get(numeroPedido - 1);
+                    pedido.agregarComentario(comentario);
+                    JOptionPane.showMessageDialog(this, "Comentario agregado exitosamente.");
+                } else {
+                    JOptionPane.showMessageDialog(this, "El comentario no puede estar vacío.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Número de pedido no válido.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingresa un número válido.");
+        }
+    }
+
+    private void verHistorialCompras() {
+        StringBuilder historial = new StringBuilder("--- Historial de Compras ---\n");
+        for (Pedido pedido : pedidosPendientes) {
+            historial.append("Pedido total: $").append(pedido.getTotal()).append(" - Estado: ").append(pedido.getEstado()).append("\n");
+            if (!pedido.getComentario().isEmpty()) {
+                historial.append("Comentario: ").append(pedido.getComentario()).append("\n");
+            }
+        }
+        JOptionPane.showMessageDialog(this, historial.toString());
+    }
+
     public String obtenerRol(String nombreUsuario) {
         return roles.get(nombreUsuario);
     }
@@ -351,10 +386,16 @@ class Plato {
 class Pedido {
     private ArrayList<Plato> platos;
     private double total;
-
+    private String estado;
+    private String comentario;
+    private LocalDateTime fechaEnvio;
+    
     public Pedido(ArrayList<Plato> platos, double total) {
         this.platos = platos;
         this.total = total;
+        this.estado = "Pendiente";
+        this.comentario = "";
+        this.fechaEnvio = LocalDateTime.now();
     }
 
     public ArrayList<Plato> getPlatos() {
@@ -364,4 +405,23 @@ class Pedido {
     public double getTotal() {
         return total;
     }
+    
+    public String getEstado() {
+        return estado;
+    }
+
+        public String getComentario() {
+        return comentario;
+    }
+
+    public void agregarComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public String getFechaEnvio() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return fechaEnvio.format(formatter);
+    }
+
+
 }
