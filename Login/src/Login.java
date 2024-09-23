@@ -273,6 +273,18 @@ public class Login extends JFrame {
         }
     }
 
+    private void verEstadoPedidos() {
+        if (pedidosPendientes.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay pedidos pendientes.");
+        } else {
+            StringBuilder estado = new StringBuilder("--- Estado de tus Pedidos ---\n");
+            for (Pedido pedido : pedidosPendientes) {
+                estado.append("Pedido con total: $").append(pedido.getTotal()).append(" - Estado: ").append(pedido.getEstado()).append("\n");
+            }
+            JOptionPane.showMessageDialog(this, estado.toString());
+        }
+}
+
     private void inicializarMenuPlatos() {
         menuPlatos.add(new Plato("Pizza", 8.50));
         menuPlatos.add(new Plato("Hamburguesa", 6.00));
