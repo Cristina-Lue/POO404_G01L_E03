@@ -19,7 +19,10 @@ public class Login extends JFrame {
         menuPlatos = new ArrayList<>();
         pedidosPendientes = new ArrayList<>();
         inicializarMenuPlatos();
-
+         setupUI();
+    }
+    
+    private void setupUI() {
         setTitle("Sistema de Pedidos");
         setSize(400, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
