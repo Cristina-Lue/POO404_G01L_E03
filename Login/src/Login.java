@@ -120,7 +120,14 @@ public class Login extends JFrame {
         boolean salir = false;
 
         while (!salir) {
-            String[] options = {"Ver menú de platos", "Seleccionar platos", "Realizar pago", "Salir"};
+            String[] options = {
+                "Ver menú de platos", 
+                "Seleccionar platos", 
+                "Realizar pago", 
+                "Ver estado de pedidos",
+                "Historial de compras",
+                "Salir"
+            };
             int opcion = JOptionPane.showOptionDialog(this, "Menú Cliente", "Opciones",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
@@ -135,6 +142,12 @@ public class Login extends JFrame {
                     realizarPago(platosSeleccionados);
                     break;
                 case 3:
+                    verEstadoPedidos();
+                    break;
+                case 4:
+                    verHistorialCompras();
+                    break;
+                case 5:
                     salir = true;
                     break;
                 default:
