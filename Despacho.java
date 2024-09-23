@@ -181,4 +181,26 @@ public class Login extends JFrame {
         }
     }
 
-   
+    private void agregarComentario() {
+        String input = JOptionPane.showInputDialog("Ingresa el número del pedido para agregar un comentario:");
+        if (input == null) return;
+        int numeroPedido;
+
+        try {
+            numeroPedido = Integer.parseInt(input);
+            if (numeroPedido > 0 && numeroPedido <= pedidosPendientes.size()) {
+                String comentario = JOptionPane.showInputDialog("Ingresa el comentario:");
+                if (comentario != null && !comentario.trim().isEmpty()) {
+                    Pedido pedido = pedidosPendientes.get(numeroPedido - 1);
+                    pedido.agregarComentario(comentario);
+                    JOptionPane.showMessageDialog(this, "Comentario agregado exitosamente.");
+                } else {
+                    JOptionPane.showMessageDialog(this, "El comentario no puede estar vacío.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Número de pedido no válido.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingresa un número válido.");
+        }
+    }
