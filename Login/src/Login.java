@@ -241,6 +241,12 @@ public class Login extends JFrame {
                     pedidos.append(" - ").append(plato.getNombre()).append(" - $").append(plato.getPrecio()).append("\n");
                 }
                 pedidos.append("Total: $").append(pedido.getTotal()).append("\n");
+                pedidos.append("Estado: ").append(pedido.getEstado()).append("\n");
+                pedidos.append("Hora de envío: ").append(pedido.getFechaEnvio()).append("\n\n");
+                if (!pedido.getComentario().isEmpty()) {
+                    pedidos.append("Comentario: ").append(pedido.getComentario()).append("\n");
+                }
+                pedidos.append("\n");
             }
             JOptionPane.showMessageDialog(this, pedidos.toString());
         }
