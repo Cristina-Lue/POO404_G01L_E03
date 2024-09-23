@@ -159,7 +159,7 @@ public class Login extends JFrame {
     private void menuEmpleado() {
         boolean salir = false;
         while (!salir) {
-            String[] options = {"Ver pedidos pendientes", "Despachar pedido", "Salir"};
+            String[] options = {"Ver pedidos pendientes", "Despachar pedido", "Agregar comentario", "Salir"};
             int opcion = JOptionPane.showOptionDialog(this, "Menú Empleado", "Opciones",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
@@ -171,6 +171,9 @@ public class Login extends JFrame {
                     despacharPedido();
                     break;
                 case 2:
+                    agregarComentario();  
+                    break;
+                case 3:
                     salir = true;
                     break;
                 default:
