@@ -204,3 +204,9 @@ public class Login extends JFrame {
             JOptionPane.showMessageDialog(this, "Por favor, ingresa un número válido.");
         }
     }
+    public enum EstadoPedido {
+        ACEPTADO,
+        EN_PROCESO_ELABORACION,
+        ENTREGADO_REPARTIDOR,
+        ENTREGADO_CLIENTE
+    }
