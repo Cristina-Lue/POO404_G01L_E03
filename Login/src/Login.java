@@ -196,6 +196,7 @@ public class Login extends JFrame {
         while (seleccionando) {
             mostrarMenuPlatos();
             String input = JOptionPane.showInputDialog("Selecciona el número del plato (0 para salir):");
+            if (input == null) return;
             int seleccionPlato = Integer.parseInt(input);
 
             if (seleccionPlato > 0 && seleccionPlato <= menuPlatos.size()) {
@@ -213,7 +214,8 @@ public class Login extends JFrame {
     private void realizarPago(ArrayList<Plato> platosSeleccionados) {
         if (platosSeleccionados.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No has seleccionado ningún plato.");
-        } else {
+            return;
+        } 
             double total = 0;
             StringBuilder resumen = new StringBuilder("--- Resumen de tu pedido ---\n");
             for (Plato plato : platosSeleccionados) {
@@ -221,12 +223,19 @@ public class Login extends JFrame {
                 total += plato.getPrecio();
             }
             resumen.append("Total a pagar: $").append(total);
-            JOptionPane.showMessageDialog(this, resumen.toString());
+            // Ofrecer opciones de pago
+        String[] opcionesPago = {"Efectivo", "Tarjeta de Crédito/Débito"};
+        int seleccion = JOptionPane.showOptionDialog(this, resumen.toString() + "¿Cómo deseas pagar?",
+                "Método de Pago", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcionesPago, opcionesPago[0]);
 
-            // Añadir el pedido a la lista de pedidos pendientes
-            pedidosPendientes.add(new Pedido(platosSeleccionados, total));
-            platosSeleccionados.clear();  // Limpiar la selección después del pago
-        }
+        if (seleccion == JOptionPane.CLOSED_OPTION) return; 
+
+        String metodoPago = opcionesPago[seleccion];
+        JOptionPane.showMessageDialog(this, "Has seleccionado pagar con: " + metodoPago);
+
+        // Añadir el pedido a la lista de pedidos pendientes
+        pedidosPendientes.add(new Pedido(platosSeleccionados, total));
+        platosSeleccionados.clear(); 
     }
 
     private void verPedidosPendientes() {
